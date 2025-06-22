@@ -1,0 +1,294 @@
+/* Reset box sizing para todos os elementos */
+* {
+    box-sizing: border-box;
+}
+
+/* Corpo da página: centraliza o container app na tela */
+body {
+    margin: 0;
+    background: #ccc;
+    /* Fundo neutro */
+    display: flex;
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    height: 100vh;
+    /* Altura total da viewport */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+    /* Evita seleção de texto */
+}
+
+/* Container principal do app */
+#appContainer {
+    position: relative;
+    /* Para posicionar elementos internos com absolute */
+    width: 360px;
+    /* Largura fixa para mobile */
+    height: 640px;
+    /* Altura fixa para mobile */
+    background-image: url('imagemfd3.gif');
+    /* Fundo: sua imagem do Canva */
+    background-size: cover;
+    /* Ajusta a imagem para cobrir todo container */
+    background-position: center;
+    border-radius: 20px;
+    /* Bordas arredondadas */
+    padding: 30px 25px;
+    /* Espaço interno (ajuste para alinhar com fundo) */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    color: #2c2c2c;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho (header) - contém pontuação e balão de pontos ganhos */
+header {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+
+/* Balão de pontos ganhos (explosão + texto) - topo esquerdo */
+#pontosGanhos {
+    position: absolute;
+    top: 5px;
+    /* mesmo top do placar */
+    right: 220px;
+    /* ajuste para posicionar ao lado esquerdo do placar */
+    color: white;
+    /* cor igual */
+    font-size: 40px;
+    /* igual ao placar */
+    font-weight: 700;
+    /* igual ao placar */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    /* mesma sombra do placar */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    user-select: none;
+    z-index: 10;
+    background: none;
+    /* remove fundo */
+    box-shadow: none;
+    /* remove sombra de caixa */
+    border-radius: 0;
+    /* remove borda arredondada */
+    padding: 0 5px;
+    /* leve padding para não grudar no texto */
+}
+
+
+/* Mostrar balão */
+#pontosGanhos.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Pontuação total - canto superior direito */
+#scoreBoard {
+    font-size: 40px;
+    /* por exemplo, aumentando de 20px para 28px */
+    position: absolute;
+    top: 3px;
+    right: 70px;
+    color: white;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+#faseDificuldade {
+    position: absolute;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(249, 73, 178);
+    font-weight: 700;
+    font-size: 25px;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    width: 90%;
+}
+
+/* Container da pergunta e respostas - ocupa o espaço restante */
+#perguntaContainer {
+    position: relative;
+    /* Para poder posicionar filhos com absolute */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Caixa da pergunta */
+#pergunta {
+    position: absolute;
+    top: 120px;
+    left: 10px;
+    /* antes: 20px, diminuiu para aumentar a largura */
+    right: 10px;
+    /* antes: 20px, diminuiu para aumentar a largura */
+    height: 110px;
+    /* antes: 90px, aumentou para ficar 2cm maior */
+    font-size: 20px;
+    font-weight: 700;
+    background: rgba(255 255 255 / 0.85);
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15);
+    color: #222;
+    line-height: 1.3;
+}
+
+/* Container das opções (respostas) */
+#opcoes {
+    position: absolute;
+    top: 260px;
+    /* Começa logo abaixo da pergunta */
+    left: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* Espaço entre os botões */
+    max-height: 350px;
+    /* Limita altura, pode ajustar */
+
+}
+
+/* Botões das opções */
+.opcao {
+    background: rgba(255 255 255 / 0.95);
+    border: 2px solid #555;
+    border-radius: 15px;
+    padding: 14px 22px;
+    font-size: 18px;
+    /* Ajuste o tamanho da fonte */
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #222;
+    transition: background-color 0.3s, border-color 0.3s;
+    box-shadow: 1px 2px 7px rgba(0, 0, 0, 0.1);
+    user-select: none;
+}
+
+/* Hover dos botões */
+.opcao:hover:not(:disabled) {
+    background-color: #e8f0fe;
+    border-color: #4285f4;
+    transform: scale(1.03);
+}
+
+/* Estado desabilitado */
+.opcao:disabled {
+    background-color: #ddd;
+    cursor: default;
+    border-color: #aaa;
+    color: #666;
+    transform: none;
+}
+
+/* Letra da opção (A, B, C, D) dentro do botão */
+.letraOpcao {
+    background-color: #4285f4;
+    color: white;
+    font-weight: 900;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    flex-shrink: 0;
+    font-size: 16px;
+}
+
+/* Texto do resultado abaixo das respostas */
+#resultado {
+    position: absolute;
+    bottom: 30px;
+    /* Distância da base do container */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: #444;
+    user-select: none;
+    min-height: 28px;
+    /* Mantém espaço mesmo sem texto */
+}
+
+/* Botão Próxima pergunta */
+#btnProxima {
+    position: absolute;
+    bottom: 70px;
+    /* Acima do resultado */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 12px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    user-select: none;
+    box-shadow: 0 3px 8px #388e3c;
+    transition: background-color 0.3s ease;
+    display: none;
+    /* Inicialmente oculto */
+}
+
+/* Hover botão próxima */
+#btnProxima:hover {
+    background-color: #388e3c;
+}
+
+/* Animações para fade-in e fade-out */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

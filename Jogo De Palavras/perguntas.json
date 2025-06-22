@@ -1,0 +1,308 @@
+{
+    "facil": [
+        {
+            "pergunta": "Qual país é conhecido como o berço da democracia?",
+            "opcoes": [
+                "Roma",
+                "Grécia",
+                "Egito",
+                "China"
+            ],
+            "resposta": "Grécia"
+        },
+        {
+            "pergunta": "Em que continente está localizado o deserto do Saara?",
+            "opcoes": [
+                "Ásia",
+                "África",
+                "América do Sul",
+                "Austrália"
+            ],
+            "resposta": "África"
+        },
+        {
+            "pergunta": "Qual é o maior órgão do corpo humano?",
+            "opcoes": [
+                "Coração",
+                "Fígado",
+                "Pele",
+                "Pulmões"
+            ],
+            "resposta": "Pele"
+        },
+        {
+            "pergunta": "Quem foi o responsável pela Teoria da Relatividade?",
+            "opcoes": [
+                "Isaac Newton",
+                "Galileu Galilei",
+                "Albert Einstein",
+                "Nikola Tesla"
+            ],
+            "resposta": "Albert Einstein"
+        },
+        {
+            "pergunta": "Qual a capital da Austrália?",
+            "opcoes": [
+                "Sydney",
+                "Melbourne",
+                "Canberra",
+                "Brisbane"
+            ],
+            "resposta": "Canberra"
+        },
+        {
+            "pergunta": "Qual é a moeda oficial do Japão?",
+            "opcoes": [
+                "Yen",
+                "Won",
+                "Rupee",
+                "Dólar"
+            ],
+            "resposta": "Yen"
+        },
+        {
+            "pergunta": "Qual destes é um metal precioso?",
+            "opcoes": [
+                "Alumínio",
+                "Ouro",
+                "Ferro",
+                "Chumbo"
+            ],
+            "resposta": "Ouro"
+        },
+        {
+            "pergunta": "Quem escreveu 'Romeu e Julieta'?",
+            "opcoes": [
+                "William Shakespeare",
+                "Charles Dickens",
+                "Jane Austen",
+                "Mark Twain"
+            ],
+            "resposta": "William Shakespeare"
+        },
+        {
+            "pergunta": "Qual país sediou os Jogos Olímpicos de 2016?",
+            "opcoes": [
+                "China",
+                "Reino Unido",
+                "Brasil",
+                "Rússia"
+            ],
+            "resposta": "Brasil"
+        },
+        {
+            "pergunta": "Qual é o planeta mais próximo do Sol?",
+            "opcoes": [
+                "Venus",
+                "Terra",
+                "Marte",
+                "Mercúrio"
+            ],
+            "resposta": "Mercúrio"
+        }
+    ],
+    "medio": [
+        {
+            "pergunta": "Quem foi o líder da Revolução Cubana em 1959?",
+            "opcoes": [
+                "Fidel Castro",
+                "Che Guevara",
+                "Hugo Chávez",
+                "Raúl Castro"
+            ],
+            "resposta": "Fidel Castro"
+        },
+        {
+            "pergunta": "Qual é a principal função dos glóbulos vermelhos no sangue?",
+            "opcoes": [
+                "Combater infecções",
+                "Transportar oxigênio",
+                "Coagular sangue",
+                "Regular temperatura"
+            ],
+            "resposta": "Transportar oxigênio"
+        },
+        {
+            "pergunta": "Em que país surgiu o movimento renascentista?",
+            "opcoes": [
+                "França",
+                "Itália",
+                "Inglaterra",
+                "Espanha"
+            ],
+            "resposta": "Itália"
+        },
+        {
+            "pergunta": "Qual é o nome do maior sistema de arrecifes de corais do mundo?",
+            "opcoes": [
+                "Recife de Belize",
+                "Grande Barreira de Coral",
+                "Recife de Andros",
+                "Recife de Palancar"
+            ],
+            "resposta": "Grande Barreira de Coral"
+        },
+        {
+            "pergunta": "Qual filósofo grego foi professor de Alexandre, o Grande?",
+            "opcoes": [
+                "Sócrates",
+                "Platão",
+                "Aristóteles",
+                "Epicuro"
+            ],
+            "resposta": "Aristóteles"
+        },
+        {
+            "pergunta": "Qual país é conhecido como 'Terra do Sol Nascente'?",
+            "opcoes": [
+                "China",
+                "Japão",
+                "Coreia do Sul",
+                "Tailândia"
+            ],
+            "resposta": "Japão"
+        },
+        {
+            "pergunta": "Qual evento histórico marcou o fim da Idade Média?",
+            "opcoes": [
+                "Revolução Francesa",
+                "Queda do Império Romano do Ocidente",
+                "Descobrimento da América",
+                "Revolução Industrial"
+            ],
+            "resposta": "Descobrimento da América"
+        },
+        {
+            "pergunta": "Qual é o símbolo químico do ouro?",
+            "opcoes": [
+                "Au",
+                "Ag",
+                "Fe",
+                "Pb"
+            ],
+            "resposta": "Au"
+        },
+        {
+            "pergunta": "Quem foi o primeiro homem a pisar na Lua?",
+            "opcoes": [
+                "Neil Armstrong",
+                "Buzz Aldrin",
+                "Michael Collins",
+                "Yuri Gagarin"
+            ],
+            "resposta": "Neil Armstrong"
+        },
+        {
+            "pergunta": "Em que ano foi proclamada a independência dos Estados Unidos?",
+            "opcoes": [
+                "1776",
+                "1789",
+                "1804",
+                "1812"
+            ],
+            "resposta": "1776"
+        }
+    ],
+    "dificil": [
+        {
+            "pergunta": "Qual tratado encerrou oficialmente a Primeira Guerra Mundial?",
+            "opcoes": [
+                "Tratado de Versalhes",
+                "Tratado de Tordesilhas",
+                "Paz de Westfália",
+                "Tratado de Paris"
+            ],
+            "resposta": "Tratado de Versalhes"
+        },
+        {
+            "pergunta": "Qual é a obra literária escrita por James Joyce considerada um marco do modernismo?",
+            "opcoes": [
+                "Ulisses",
+                "Odisseia",
+                "Dom Quixote",
+                "Guerra e Paz"
+            ],
+            "resposta": "Ulisses"
+        },
+        {
+            "pergunta": "Qual partícula subatômica foi descoberta por J.J. Thomson em 1897?",
+            "opcoes": [
+                "Próton",
+                "Elétron",
+                "Nêutron",
+                "Quark"
+            ],
+            "resposta": "Elétron"
+        },
+        {
+            "pergunta": "Qual o nome do movimento artístico que deu origem ao cubismo?",
+            "opcoes": [
+                "Expressionismo",
+                "Surrealismo",
+                "Impressionismo",
+                "Cubismo"
+            ],
+            "resposta": "Cubismo"
+        },
+        {
+            "pergunta": "Quem foi o imperador romano durante o grande incêndio de Roma em 64 d.C.?",
+            "opcoes": [
+                "Nero",
+                "César Augusto",
+                "Trajano",
+                "Marco Aurélio"
+            ],
+            "resposta": "Nero"
+        },
+        {
+            "pergunta": "Qual é o nome da famosa teoria desenvolvida por Alan Turing?",
+            "opcoes": [
+                "Teoria da Relatividade",
+                "Máquina de Turing",
+                "Teoria Quântica",
+                "Teoria das Cordas"
+            ],
+            "resposta": "Máquina de Turing"
+        },
+        {
+            "pergunta": "Qual é o nome do processo pelo qual plantas convertem luz solar em energia química?",
+            "opcoes": [
+                "Respiração",
+                "Fermentação",
+                "Fotossíntese",
+                "Transpiração"
+            ],
+            "resposta": "Fotossíntese"
+        },
+        {
+            "pergunta": "Quem escreveu o livro 'O Capital', que aborda a crítica ao capitalismo?",
+            "opcoes": [
+                "Karl Marx",
+                "Adam Smith",
+                "John Maynard Keynes",
+                "Max Weber"
+            ],
+            "resposta": "Karl Marx"
+        },
+        {
+            "pergunta": "Qual cidade foi a capital do Império Bizantino?",
+            "opcoes": [
+                "Roma",
+                "Constantinopla",
+                "Atenas",
+                "Alexandria"
+            ],
+            "resposta": "Constantinopla"
+        },
+        {
+            "pergunta": "Qual é o nome do satélite natural da Terra?",
+            "opcoes": [
+                "Lua",
+                "Phobos",
+                "Deimos",
+                "Europa"
+            ],
+            "resposta": "Lua"
+        }
+    ]
+}

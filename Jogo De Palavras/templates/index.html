@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Jogo de Perguntas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div id="appContainer">
+    <header>
+      <div id="pontosGanhos" class="hidden">
+        <span id="pontosGanhosTexto"></span>
+      </div>
+      <div id="scoreBoard"><span id="pontos">0</span></div>
+    </header>
+<div id="faseDificuldade">
+  Fase: <span id="fase">1</span>
+</div>
+
+    <div id="perguntaContainer" class="fade-in">
+      <div id="pergunta">Carregando pergunta...</div>
+      <div id="opcoes"></div>
+    </div>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    let pontos = 0;
+    let fase = 1;
+    let dificuldadeAtual = 'facil';
+
+    const pontosPorNivel = {
+        facil: 33,
+        medio: 66,
+        dificil: 68
+    };
+
+    const penalidadePorNivel = {
+        facil: 20,
+        medio: 10,
+        dificil: 5
+    };
+
+    let todasPerguntas = { facil: [], medio: [], dificil: [] };
+    let usadas = { facil: [], medio: [], dificil: [] };
+    let perguntaAtual = null;
+
+    async function carregarPerguntas() {
+        const response = await fetch('/perguntas');
+        todasPerguntas = await response.json();
+    }
+
+    function atualizarUI() {
+        document.getElementById('pontos').innerText = pontos;
+        document.getElementById('fase').innerText = fase;
+        // Linha que atualizava a dificuldade foi removida
+    }
+
+    function getPerguntaAleatoria(dificuldade) {
+        const disponiveis = todasPerguntas[dificuldade].filter(
+            (p) => !usadas[dificuldade].includes(p.pergunta)
+        );
+
+        if (disponiveis.length === 0) return null;
+
+        const sorteada = disponiveis[Math.floor(Math.random() * disponiveis.length)];
+        return sorteada;
+    }
+
+function mostrarBalaoPontos(valor, cor) {
+    const balao = document.getElementById('pontosGanhos');
+    const texto = document.getElementById('pontosGanhosTexto');
+    // const gif = document.getElementById('gifExplosao'); <<< Remover esta linha
+
+    texto.innerText = `${valor >= 0 ? "+" : ""}${valor}`;
+    // Não precisa mais mexer no gif
+
+    balao.classList.remove('hidden');
+    balao.classList.add('show');
+
+    setTimeout(() => {
+        balao.classList.remove('show');
+        balao.classList.add('hidden');
+    }, 1500);
+}
+
+
+    function bloquearBotoes() {
+        document.querySelectorAll('#opcoes button').forEach((btn) => {
+            btn.disabled = true;
+        });
+    }
+
+    function desbloquearBotoes() {
+        document.querySelectorAll('#opcoes button').forEach((btn) => {
+            btn.disabled = false;
+        });
+    }
+
+    async function novaPergunta() {
+        document.getElementById('resultado').innerText = '';
+        document.getElementById('perguntaContainer').classList.remove('fade-in');
+        document.getElementById('perguntaContainer').classList.add('fade-out');
+
+        setTimeout(() => {
+            if (fase <= 3) dificuldadeAtual = 'facil';
+            else if (fase <= 6) dificuldadeAtual = 'medio';
+            else dificuldadeAtual = 'dificil';
+
+            perguntaAtual = getPerguntaAleatoria(dificuldadeAtual);
+
+            if (!perguntaAtual) {
+                document.getElementById('pergunta').innerText = `✅ Você já respondeu todas as perguntas de ${dificuldadeAtual}!`;
+                document.getElementById('opcoes').innerHTML = '';
+                return;
+            }
+
+            usadas[dificuldadeAtual].push(perguntaAtual.pergunta);
+
+            document.getElementById('pergunta').innerText = perguntaAtual.pergunta;
+            const opcoesDiv = document.getElementById('opcoes');
+            opcoesDiv.innerHTML = '';
+
+            const letras = ['A', 'B', 'C', 'D'];
+
+            perguntaAtual.opcoes.forEach((opcao, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'opcao';
+
+                const spanLetra = document.createElement('span');
+                spanLetra.className = 'letraOpcao';
+                spanLetra.innerText = letras[i] || '';
+
+                btn.appendChild(spanLetra);
+                btn.appendChild(document.createTextNode(opcao));
+                btn.onclick = () => verificarResposta(opcao, perguntaAtual.resposta, dificuldadeAtual);
+                opcoesDiv.appendChild(btn);
+            });
+
+            document.getElementById('perguntaContainer').classList.remove('fade-out');
+            document.getElementById('perguntaContainer').classList.add('fade-in');
+            atualizarUI();
+            desbloquearBotoes();
+        }, 500);
+    }
+
+    function verificarResposta(escolha, resposta, nivel) {
+        bloquearBotoes();
+        if (escolha === resposta) {
+            pontos += pontosPorNivel[nivel];
+            mostrarBalaoPontos(pontosPorNivel[nivel], '#4caf50');
+            document.getElementById('resultado').innerHTML = '<img src="static/point.png" alt="Correto" style="width:24px; height:24px;" />';
+            fase++;
+            atualizarUI();
+
+            setTimeout(() => {
+                novaPergunta();
+            }, 2000);
+        } else {
+            pontos -= penalidadePorNivel[nivel];
+            mostrarBalaoPontos(-penalidadePorNivel[nivel], '#e53935');
+            document.getElementById('resultado').innerHTML = '<img src="static/x.png" alt="Incorreto" style="width:24px; height:24px;" />';
+            atualizarUI();
+
+            setTimeout(() => {
+                novaPergunta();
+            }, 2000);
+        }
+
+    }
+
+    (async function iniciarJogo() {
+        await carregarPerguntas();
+        novaPergunta();
+    })();
+  </script>
+</body>
+</html>
